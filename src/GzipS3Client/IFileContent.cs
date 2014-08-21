@@ -6,6 +6,6 @@ namespace GzipS3Client
     {
         string Url { get; set; }
         string Key { get; }
-        Stream ContentStream { get; }
+        byte[] Content { get; }
     }
 }

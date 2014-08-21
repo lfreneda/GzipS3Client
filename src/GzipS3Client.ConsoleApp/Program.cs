@@ -13,19 +13,22 @@ namespace GzipS3Client.ConsoleApp
             {
                 AccessKey = "",
                 SecretKey = "",
-                ServiceUrl = "",
+                ServiceUrl = "http://s3-sa-east-1.amazonaws.com",
                 BucketName = ""
             };
+
 
             IStorageService storage = new AmazonStorageService(s3Config);
 
             var fileStream = new FileStream(@"sample_file_to_upload.txt", FileMode.Open);
 
-            storage.Save(new FileContent("file_key1", fileStream));
+            var bytes = fileStream.ReadBytes();
 
-            var fileContent = storage.Get("file_key1");
+            storage.SaveAsync(new FileContent("file_key1", bytes));
 
-            var contentAsString = fileContent.ContentStream.ReadString();
+            var contentBack = storage.GetAsync("file_key1").Result;
+
+            var contentAsString = System.Text.Encoding.UTF8.GetString(contentBack.Content);
 
             Console.WriteLine(contentAsString);
 
