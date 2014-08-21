@@ -12,6 +12,7 @@
     <description>$description$</description>
     <releaseNotes>
         First release, zip on save, unzip on get  
+        Configuration hotfix
      </releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>S3 S3Client zip unzip gzip compressed</tags>
