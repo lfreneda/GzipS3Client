@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using Amazon;
@@ -53,9 +54,17 @@ namespace GzipS3Client
                         Key = fileContent.Key,
                     };
 
+                    fileContent.Url = CreateUrl(fileContent.Key);
+
                     var putResponse = await client.PutObjectAsync(putRequest);
                 }
             }
+        }
+
+        private string CreateUrl(string key)
+        {
+            var serviceUrlWithBucketName = _s3Configuration.ServiceUrl.Replace("http://s3-", string.Format("http://{0}.s3-", _s3Configuration.BucketName));
+            return serviceUrlWithBucketName + key;
         }
 
         public IFileContent Get(string key)

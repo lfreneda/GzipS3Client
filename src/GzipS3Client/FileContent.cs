@@ -10,6 +10,7 @@ namespace GzipS3Client
             ContentStream = contentStream;
         }
 
+        public string Url { get; set; }
         public string Key { get; set; }
         public Stream ContentStream { get; set; }
     }
