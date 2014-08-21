@@ -61,6 +61,7 @@
     <Compile Include="StringFileContent.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GzipS3Client.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

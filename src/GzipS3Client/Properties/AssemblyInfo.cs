@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("GzipS3Client")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Lightweight AWS S3 Client. Simplify usage of AWS S3 to get and put objects.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("lfreneda~")]
 [assembly: AssemblyProduct("GzipS3Client")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>GzipS3Client</title>
+    <authors>lfreneda</authors>
+    <owners>lfreneda</owners>
+    <licenseUrl>https://raw.githubusercontent.com/lfreneda/GzipS3Client/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/lfreneda/GzipS3Client</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>
+        First release, zip on save, unzip on get  
+     </releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>S3 S3Client zip unzip gzip compressed</tags>
+  </metadata>
+</package>
