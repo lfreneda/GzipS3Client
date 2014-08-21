@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GzipS3Client", "GzipS3Client\GzipS3Client.csproj", "{411E5073-93CF-45D1-9A0E-EBFF02D06F65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GzipS3Client.ConsoleApp", "GzipS3Client.ConsoleApp\GzipS3Client.ConsoleApp.csproj", "{29AA5A70-694E-4DB6-A8B6-1F80E03C1CA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{411E5073-93CF-45D1-9A0E-EBFF02D06F65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{411E5073-93CF-45D1-9A0E-EBFF02D06F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{411E5073-93CF-45D1-9A0E-EBFF02D06F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{411E5073-93CF-45D1-9A0E-EBFF02D06F65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29AA5A70-694E-4DB6-A8B6-1F80E03C1CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29AA5A70-694E-4DB6-A8B6-1F80E03C1CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29AA5A70-694E-4DB6-A8B6-1F80E03C1CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29AA5A70-694E-4DB6-A8B6-1F80E03C1CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
