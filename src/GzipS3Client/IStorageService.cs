@@ -6,5 +6,6 @@ namespace GzipS3Client
     {
         void SaveAsync(IFileContent fileContent);
         Task<IFileContent> GetAsync(string key);
+        Task<bool> ContainsFile(string key);
     }
 }

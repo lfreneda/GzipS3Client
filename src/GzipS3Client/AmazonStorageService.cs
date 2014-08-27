@@ -64,7 +64,7 @@ namespace GzipS3Client
             {
                 return serviceUrlWithBucketName + key;
             }
-            
+
             return serviceUrlWithBucketName + "/" + key;
         }
 
@@ -85,6 +85,30 @@ namespace GzipS3Client
             var content = responseBytes.GzipDescompress().ReadBytes();
 
             return new FileContent(key, content);
+        }
+
+        public async Task<bool> ContainsFile(string key)
+        {
+            var client = CreateS3Client();
+
+            try
+            {
+                var response = await client.GetObjectMetadataAsync(new GetObjectMetadataRequest
+                {
+                    BucketName = _s3Configuration.BucketName,
+                    Key = key,
+                });
+
+                return true;
+            }
+            catch (AmazonS3Exception ex)
+            {
+                if (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    return false;
+
+                //status wasn't not found, so throw the exception
+                throw;
+            }
         }
     }
 }

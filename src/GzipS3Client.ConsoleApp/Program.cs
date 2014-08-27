@@ -17,7 +17,6 @@ namespace GzipS3Client.ConsoleApp
                 BucketName = ""
             };
 
-
             IStorageService storage = new AmazonStorageService(s3Config);
 
             var fileStream = new FileStream(@"sample_file_to_upload.txt", FileMode.Open);
