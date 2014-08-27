@@ -1,6 +1,4 @@
-using System;
 using System.IO;
-using System.Threading.Tasks;
 using Amazon;
 using Amazon.S3;
 using Amazon.S3.Model;
@@ -32,7 +30,7 @@ namespace GzipS3Client
         }
 
 
-        public async void SaveAsync(IFileContent fileContent)
+        public void Save(IFileContent fileContent)
         {
             var client = CreateS3Client();
 
@@ -50,16 +48,20 @@ namespace GzipS3Client
                         Key = fileContent.Key,
                     };
 
-                    fileContent.Url = CreateUrl(fileContent.Key);
-
-                    var putResponse = await client.PutObjectAsync(putRequest);
+                    client.PutObject(putRequest);
                 }
             }
         }
 
-        private string CreateUrl(string key)
+        public string CreateUrl(IFileContent fileContent)
+        {
+            return CreateUrl(fileContent.Key);
+        }
+
+        public string CreateUrl(string key)
         {
             var serviceUrlWithBucketName = _s3Configuration.ServiceUrl.Replace("http://s3-", string.Format("http://{0}.s3-", _s3Configuration.BucketName));
+
             if (serviceUrlWithBucketName.EndsWith("/"))
             {
                 return serviceUrlWithBucketName + key;
@@ -68,7 +70,7 @@ namespace GzipS3Client
             return serviceUrlWithBucketName + "/" + key;
         }
 
-        public async Task<IFileContent> GetAsync(string key)
+        public IFileContent Get(string key)
         {
             var client = CreateS3Client();
 
@@ -78,7 +80,7 @@ namespace GzipS3Client
                 Key = key,
             };
 
-            var response = await client.GetObjectAsync(getRequest);
+            var response = client.GetObject(getRequest);
 
             var responseBytes = response.ResponseStream.ReadBytes();
 
@@ -87,13 +89,13 @@ namespace GzipS3Client
             return new FileContent(key, content);
         }
 
-        public async Task<bool> ContainsFile(string key)
+        public bool ContainsFile(string key)
         {
             var client = CreateS3Client();
 
             try
             {
-                var response = await client.GetObjectMetadataAsync(new GetObjectMetadataRequest
+                client.GetObjectMetadata(new GetObjectMetadataRequest
                 {
                     BucketName = _s3Configuration.BucketName,
                     Key = key,
@@ -103,9 +105,7 @@ namespace GzipS3Client
             }
             catch (AmazonS3Exception ex)
             {
-                if (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
-                    return false;
-
+                if (ex.StatusCode == System.Net.HttpStatusCode.NotFound) return false;
                 //status wasn't not found, so throw the exception
                 throw;
             }

@@ -23,9 +23,9 @@ namespace GzipS3Client.ConsoleApp
 
             var bytes = fileStream.ReadBytes();
 
-            storage.SaveAsync(new FileContent("file_key1", bytes));
+            storage.Save(new FileContent("file_key1", bytes));
 
-            var contentBack = storage.GetAsync("file_key1").Result;
+            var contentBack = storage.Get("file_key1");
 
             var contentAsString = System.Text.Encoding.UTF8.GetString(contentBack.Content);
 
