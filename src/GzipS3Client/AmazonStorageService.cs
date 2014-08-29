@@ -105,7 +105,7 @@ namespace GzipS3Client
             }
             catch (AmazonS3Exception ex)
             {
-                if (ex.StatusCode == System.Net.HttpStatusCode.NotFound) return false
+                if (ex.StatusCode == System.Net.HttpStatusCode.NotFound) return false;
                 return false;
             }
         }
