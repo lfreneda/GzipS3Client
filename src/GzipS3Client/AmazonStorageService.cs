@@ -29,7 +29,6 @@ namespace GzipS3Client
             return client;
         }
 
-
         public void Save(IFileContent fileContent)
         {
             var client = CreateS3Client();

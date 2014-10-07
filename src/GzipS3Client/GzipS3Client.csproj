@@ -48,10 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmazonStorageService.cs" />
-    <Compile Include="Configuration\AmazonS3Configuration.cs" />
     <Compile Include="Configuration\AppSettingsAmazonConfiguration.cs" />
     <Compile Include="Configuration\AppSettingsAmazonS3Configuration.cs" />
     <Compile Include="Configuration\CustomAmazonConfiguration.cs" />
+    <Compile Include="Configuration\CustomAmazonS3Configuration.cs" />
     <Compile Include="Configuration\IAmazonConfiguration.cs" />
     <Compile Include="Extensions\GzipExtensions.cs" />
     <Compile Include="Configuration\IAmazonS3Configuration.cs" />
