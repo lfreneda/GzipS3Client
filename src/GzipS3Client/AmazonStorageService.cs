@@ -1,7 +1,9 @@
 using System.IO;
 using Amazon;
+using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Model;
+using Amazon.SQS;
 using GzipS3Client.Configuration;
 using GzipS3Client.Extensions;
 
@@ -21,10 +23,7 @@ namespace GzipS3Client
             var accessKey = _s3Configuration.AccessKey;
             var secretKey = _s3Configuration.SecretKey;
 
-            var client = AWSClientFactory.CreateAmazonS3Client(accessKey, secretKey, new AmazonS3Config
-            {
-                ServiceURL = _s3Configuration.ServiceUrl
-            });
+            var client = new AmazonS3Client(new BasicAWSCredentials(accessKey, secretKey), new AmazonS3Config { ServiceURL = _s3Configuration.ServiceUrl });
 
             return client;
         }
@@ -76,16 +75,27 @@ namespace GzipS3Client
             var getRequest = new GetObjectRequest
             {
                 BucketName = _s3Configuration.BucketName,
-                Key = key,
+                Key = key
             };
 
             var response = client.GetObject(getRequest);
-
             var responseBytes = response.ResponseStream.ReadBytes();
-
             var content = responseBytes.GzipDescompress().ReadBytes();
 
             return new FileContent(key, content);
+        }
+
+        public void Delete(string key)
+        {
+            var client = CreateS3Client();
+
+            var deleteRequest = new DeleteObjectRequest
+            {
+                BucketName = _s3Configuration.BucketName,
+                Key = key,
+            };
+
+            client.DeleteObject(deleteRequest);
         }
 
         public bool ContainsFile(string key)

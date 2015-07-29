@@ -4,6 +4,7 @@ namespace GzipS3Client
     {
         void Save(IFileContent fileContent);
         IFileContent Get(string key);
+        void Delete(string key);
         bool ContainsFile(string key);
         string CreateUrl(IFileContent fileContent);
     }
